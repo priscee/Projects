@@ -27,7 +27,7 @@ Start of Program
 '''
 print('Morse Code Translator\n')
 
-print("What do you wantto do?\n")
+print("What do you want to do?\n")
 print('1) Encrypt to Morse')
 print('2) Decrypt to English\n')
 select = int(input("Enter selection: "))
