@@ -10,21 +10,21 @@ pygame.init() #mandatory to open the game
 screen = pygame.display.set_mode((800,600)) #width & height
 
 #Background
-background = pygame.image.load('background_down.png')
+background = pygame.image.load('Images/background_down.png')
 
 #Background Sound
-mixer.music.load('background.wav')
+mixer.music.load('Sounds/background.wav')
 mixer.music.play(-1) #-1 will enable the music to play on loop
 
 #Title
 pygame.display.set_caption("Space Invaders")
 
 #Icon
-icon = pygame.image.load('ufo.png')
+icon = pygame.image.load('Images/ufo.png')
 pygame.display.set_icon(icon)
 
 #player
-playerImg = pygame.image.load('space-invaders.png')
+playerImg = pygame.image.load('Images/space-invaders.png')
 playerX = 370 # x-axis(width)
 playerY = 500 # y-axis(height)
 playerX_change = 0
@@ -37,17 +37,17 @@ enemyX = []
 enemyY = []
 enemyX_change = []
 enemyY_change = []
-num_of_enemies = 15
+num_of_enemies = 10
 
 for i in range(num_of_enemies):
-    enemyImg.append(pygame.image.load('enemy.png'))
+    enemyImg.append(pygame.image.load('Images/enemy.png'))
     enemyX.append(random.randint(0, 736))
     enemyY.append(random.randint(50, 150))
     enemyX_change.append(2)
     enemyY_change.append(40)
 
 #Bullet
-bulletImg = pygame.image.load('bullet.png')
+bulletImg = pygame.image.load('Images/bullet.png')
 bulletX = 0
 bulletY = 500
 bulletX_change = 0
@@ -59,13 +59,13 @@ bullet_state = "ready"
 #Font: Score & Game Over
 #Score Text
 score_value = 0
-font = pygame.font.Font('PixelifySans.ttf', 32) #fontstyle, font size
+font = pygame.font.Font('Font/PixelifySans.ttf', 32) #fontstyle, font size
 
 textX = 10
 textY = 10
 
 #Game Over Text
-over_font = pygame.font.Font('PixelifySans.ttf', 64)
+over_font = pygame.font.Font('Font/PixelifySans.ttf', 64)
 
 def show_score(x, y):
     score = font.render("Score: " + str(score_value), True, (255, 255, 255))
@@ -115,7 +115,7 @@ while running:
                 playerX_change = 3
             if event.key == pygame.K_SPACE:
                 if bullet_state == "ready":
-                    bullet_Sound = mixer.Sound('laser.wav')
+                    bullet_Sound = mixer.Sound('Sounds/laser.wav')
                     bullet_Sound.play()
                     #Current x coordinate of the spaceship
                     bulletX = playerX
@@ -156,7 +156,7 @@ while running:
         #Collision
         collision = isCollision(enemyX[i], enemyY[i], bulletX, bulletY)
         if collision:
-            explosion_Sound = mixer.Sound('explosion.wav')
+            explosion_Sound = mixer.Sound('Sounds/explosion.wav')
             explosion_Sound.play()
             bulletY = 480
             bullet_state = "ready"
